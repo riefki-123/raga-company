@@ -1,0 +1,111 @@
+---
+// About Section
+---
+
+<section id="about" class="py-20 bg-gray-50">
+	<div class="container mx-auto px-4">
+		<div class="text-center mb-16 animate-fade-in">
+			<h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+				Tentang Project RAGA
+			</h2>
+			<div class="w-24 h-1 bg-raga-green mx-auto mb-8"></div>
+		</div>
+		
+		<div class="max-w-4xl mx-auto">
+			<!-- Description -->
+			<div class="text-center mb-16 animate-slide-up">
+				<p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+					RAGA adalah sebuah sistem kontrol game inovatif yang memungkinkan pengguna untuk memainkan game fighting Tekken 6 hanya dengan menggunakan gerakan tubuh. Dengan memanfaatkan webcam standar, sistem ini secara real-time menerjemahkan aksi fisik seperti pukulan, tendangan, dan blok menjadi input keyboard yang mengontrol karakter di dalam game.
+				</p>
+			</div>
+			
+			<!-- Screenshot Carousel -->
+			<div class="mb-16">
+				<h3 class="text-2xl md:text-3xl font-semibold text-gray-800 text-center mb-8">
+					Screenshot Project
+				</h3>
+				<div class="relative overflow-hidden rounded-2xl shadow-2xl">
+					<div id="carousel" class="flex transition-transform duration-500 ease-in-out">
+						<!-- Screenshot 1 -->
+						<div class="min-w-full">
+							<img src="slide1.png" 
+       							alt="Interface Deteksi Gerakan" 
+       							class="w-full h-full object-cover aspect-video" />
+						</div>
+						
+						<!-- Screenshot 2 -->
+						<div class="min-w-full">
+  							<img src="slide2.png" 
+       							alt="Interface Deteksi Gerakan" 
+       							class="w-full h-full object-cover aspect-video" />
+						</div>
+						
+						<!-- Screenshot 3 -->
+						<div class="min-w-full">
+  							<img src="raga_freq.png" 
+	   							alt="Interface Deteksi Gerakan" 
+	   							class="w-full h-full object-cover aspect-video" />
+						</div>
+						<!-- Screenshot 4 -->
+						<div class="min-w-full">
+  							<img src="raga_rate.png" 
+       							alt="Interface Deteksi Gerakan" 
+       							class="w-full h-full object-cover aspect-video" />
+						</div>
+					</div>
+					
+					<!-- Carousel Indicators -->
+					<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+						<button class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-slide="0"></button>
+						<button class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-slide="1"></button>
+						<button class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-slide="2"></button>
+						<button class="carousel-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-slide="3"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const carousel = document.getElementById('carousel');
+		const dots = document.querySelectorAll('.carousel-dot');
+		let currentSlide = 0;
+		const totalSlides = 4;
+		
+		// Auto-scroll carousel
+		setInterval(() => {
+			currentSlide = (currentSlide + 1) % totalSlides;
+			updateCarousel();
+		}, 4000);
+		
+		// Manual navigation
+		dots.forEach((dot, index) => {
+			dot.addEventListener('click', () => {
+				currentSlide = index;
+				updateCarousel();
+			});
+		});
+		
+		function updateCarousel() {
+			if (carousel) {
+				carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+			}
+			
+			// Update dots
+			dots.forEach((dot, index) => {
+				if (index === currentSlide) {
+					dot.classList.add('bg-white');
+					dot.classList.remove('bg-white/50');
+				} else {
+					dot.classList.remove('bg-white');
+					dot.classList.add('bg-white/50');
+				}
+			});
+		}
+		
+		// Initialize
+		updateCarousel();
+	});
+</script>

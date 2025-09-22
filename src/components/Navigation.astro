@@ -1,0 +1,58 @@
+---
+// Navigation component
+---
+
+<nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg z-50 transition-all duration-300">
+	<div class="container mx-auto px-4 py-3">
+		<div class="flex items-center justify-between">
+			<div class="flex items-center space-x-3">
+				<span class="font-bold text-xl text-gray-800">Realtime Action Gesture Automator</span>
+			</div>
+			
+			<div class="hidden md:flex space-x-8">
+				<a href="#hero" class="text-gray-700 hover:text-raga-green transition-colors duration-300">Beranda</a>
+				<a href="#about" class="text-gray-700 hover:text-raga-green transition-colors duration-300">Tentang</a>
+				<a href="#demo" class="text-gray-700 hover:text-raga-green transition-colors duration-300">Demo</a>
+				<a href="#features" class="text-gray-700 hover:text-raga-green transition-colors duration-300">Fitur</a>
+				<a href="#team" class="text-gray-700 hover:text-raga-green transition-colors duration-300">Tim</a>
+			</div>
+			
+			<div class="md:hidden">
+				<button id="mobile-menu-btn" class="text-gray-700 hover:text-raga-green">
+					<i class="fas fa-bars text-xl"></i>
+				</button>
+			</div>
+		</div>
+		
+		<!-- Mobile Menu -->
+		<div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 border-t border-gray-200">
+			<div class="flex flex-col space-y-3 pt-4">
+				<a href="#hero" class="text-gray-700 hover:text-raga-green transition-colors duration-300">Beranda</a>
+				<a href="#about" class="text-gray-700 hover:text-raga-green transition-colors duration-300">Tentang</a>
+				<a href="#demo" class="text-gray-700 hover:text-raga-green transition-colors duration-300">Demo</a>
+				<a href="#features" class="text-gray-700 hover:text-raga-green transition-colors duration-300">Fitur</a>
+				<a href="#team" class="text-gray-700 hover:text-raga-green transition-colors duration-300">Tim</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<script>
+	// Mobile menu toggle
+	document.addEventListener('DOMContentLoaded', function() {
+		const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+		const mobileMenu = document.getElementById('mobile-menu');
+		
+		mobileMenuBtn?.addEventListener('click', function() {
+			mobileMenu?.classList.toggle('hidden');
+		});
+		
+		// Close mobile menu when clicking on links
+		const mobileLinks = mobileMenu?.querySelectorAll('a');
+		mobileLinks?.forEach(link => {
+			link.addEventListener('click', () => {
+				mobileMenu?.classList.add('hidden');
+			});
+		});
+	});
+</script>
